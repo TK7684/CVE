@@ -1,0 +1,204 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.4, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\ttapk\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: C:\Users\ttapk\PycharmProjects\pythonProject\CVE\cve_pipeline
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.12.1, langsmith-0.6.3, asyncio-1.2.0, benchmark-5.1.0, cov-4.1.0, flask-1.3.0, mock-3.14.1, profiling-1.8.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 62 items
+
+tests/test_integration.py::TestPipelineIntegration::test_dry_run_pipeline PASSED [  1%]
+tests/test_integration.py::TestPipelineIntegration::test_router_integration FAILED [  3%]
+tests/test_integration.py::TestSecurityIntegration::test_scope_enforcement_in_pipeline PASSED [  4%]
+tests/test_integration.py::TestSecurityIntegration::test_command_injection_prevention FAILED [  6%]
+tests/test_router.py::TestRouterClassification::test_dynamic_url_with_params FAILED [  8%]
+tests/test_router.py::TestRouterClassification::test_login_page_detection PASSED [  9%]
+tests/test_router.py::TestRouterClassification::test_api_endpoint_detection FAILED [ 11%]
+tests/test_router.py::TestRouterClassification::test_cms_detection FAILED [ 12%]
+tests/test_router.py::TestRouterClassification::test_js_file_detection PASSED [ 14%]
+tests/test_router.py::TestRouterClassification::test_static_assets_skipped PASSED [ 16%]
+tests/test_router.py::TestRouterDeduplication::test_parameter_deduplication PASSED [ 17%]
+tests/test_router.py::TestRouterDeduplication::test_different_params_not_deduplicated FAILED [ 19%]
+tests/test_router.py::TestRouterDeduplication::test_different_paths_not_deduplicated PASSED [ 20%]
+tests/test_router.py::TestRouterDeduplication::test_exact_duplicate_removal PASSED [ 22%]
+tests/test_router.py::TestRouterEdgeCases::test_empty_url_list PASSED    [ 24%]
+tests/test_router.py::TestRouterEdgeCases::test_whitespace_urls PASSED   [ 25%]
+tests/test_router.py::TestRouterEdgeCases::test_mixed_priority PASSED    [ 27%]
+tests/test_scope_guard.py::TestScopeGuard::test_exact_domain_match PASSED [ 29%]
+tests/test_scope_guard.py::TestScopeGuard::test_subdomain_wildcard_match PASSED [ 30%]
+tests/test_scope_guard.py::TestScopeGuard::test_url_with_port PASSED     [ 32%]
+tests/test_scope_guard.py::TestScopeGuard::test_url_with_query_params PASSED [ 33%]
+tests/test_scope_guard.py::TestScopeGuard::test_out_of_scope_domain PASSED [ 35%]
+tests/test_scope_guard.py::TestScopeGuard::test_excluded_domain PASSED   [ 37%]
+tests/test_scope_guard.py::TestScopeGuard::test_similar_but_different_domain PASSED [ 38%]
+tests/test_scope_guard.py::TestScopeGuard::test_third_party_cdns PASSED  [ 40%]
+tests/test_scope_guard.py::TestScopeGuard::test_empty_url PASSED         [ 41%]
+tests/test_scope_guard.py::TestScopeGuard::test_malformed_url PASSED     [ 43%]
+tests/test_scope_guard.py::TestScopeGuard::test_url_with_credentials FAILED [ 45%]
+tests/test_scope_guard.py::TestScopeGuard::test_ip_address PASSED        [ 46%]
+tests/test_scope_guard.py::TestScopeGuard::test_localhost PASSED         [ 48%]
+tests/test_scope_guard.py::TestScopeGuardBulk::test_filter_mixed_urls PASSED [ 50%]
+tests/test_security.py::TestSecurityValidator::test_valid_https_url PASSED [ 51%]
+tests/test_security.py::TestSecurityValidator::test_valid_http_url PASSED [ 53%]
+tests/test_security.py::TestSecurityValidator::test_invalid_scheme_rejected PASSED [ 54%]
+tests/test_security.py::TestSecurityValidator::test_semicolon_injection PASSED [ 56%]
+tests/test_security.py::TestSecurityValidator::test_pipe_injection PASSED [ 58%]
+tests/test_security.py::TestSecurityValidator::test_backtick_injection PASSED [ 59%]
+tests/test_security.py::TestSecurityValidator::test_dollar_paren_injection PASSED [ 61%]
+tests/test_security.py::TestSecurityValidator::test_newline_injection PASSED [ 62%]
+tests/test_security.py::TestSecurityValidator::test_null_byte_injection PASSED [ 64%]
+tests/test_security.py::TestSecurityValidator::test_sanitize_url_safe PASSED [ 66%]
+tests/test_security.py::TestSecurityValidator::test_sanitize_url_dangerous_returns_none PASSED [ 67%]
+tests/test_security.py::TestSecurityValidator::test_sanitize_for_shell PASSED [ 69%]
+tests/test_security.py::TestSecurityValidator::test_valid_domain PASSED  [ 70%]
+tests/test_security.py::TestSecurityValidator::test_invalid_domain_format PASSED [ 72%]
+tests/test_security.py::TestSecurityValidator::test_directory_traversal_blocked PASSED [ 74%]
+tests/test_security.py::TestSecurityValidator::test_sensitive_path_warning PASSED [ 75%]
+tests/test_security.py::TestAuditLogger::test_audit_log_creation FAILED  [ 77%]
+tests/test_security.py::TestAuditLogger::test_audit_log_format FAILED    [ 79%]
+tests/test_security.py::TestAuditLogger::test_session_id_consistent FAILED [ 80%]
+tests/test_security.py::TestSecretsManager::test_mask_value PASSED       [ 82%]
+tests/test_security.py::TestSecretsManager::test_generate_secure_token PASSED [ 83%]
+tests/test_security.py::TestSecretsManager::test_hash_and_verify PASSED  [ 85%]
+tests/test_state_manager.py::TestStateManager::test_add_target PASSED    [ 87%]
+tests/test_state_manager.py::TestStateManager::test_add_duplicate_target PASSED [ 88%]
+tests/test_state_manager.py::TestStateManager::test_update_task_status PASSED [ 90%]
+tests/test_state_manager.py::TestStateManager::test_get_pending_tasks_limit PASSED [ 91%]
+tests/test_state_manager.py::TestStateManager::test_add_finding PASSED   [ 93%]
+tests/test_state_manager.py::TestStateManager::test_orphaned_finding_warning PASSED [ 95%]
+tests/test_state_manager.py::TestStateManager::test_wal_mode_enabled PASSED [ 96%]
+tests/test_state_manager.py::TestStateManager::test_checkpoint PASSED    [ 98%]
+tests/test_state_manager.py::TestStateManagerConcurrency::test_concurrent_adds PASSED [100%]
+
+================================== FAILURES ===================================
+_______________ TestPipelineIntegration.test_router_integration _______________
+tests\test_integration.py:61: in test_router_integration
+    assert len(queues[TargetType.LOGIN]) == 1
+E   AssertionError: assert 2 == 1
+E    +  where 2 = len([RoutedTarget(url='https://www.testdomain.com/login', target_type=<TargetType.LOGIN: 'login'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://api.testdomain.com/v1/users?id=1', target_type=<TargetType.LOGIN: 'login'>, parameters=[], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 5 URLs...
+INFO     HunterLoop:router.py:88 [Router] login: 2 targets
+INFO     HunterLoop:router.py:88 [Router] cms: 1 targets
+INFO     HunterLoop:router.py:88 [Router] js_file: 1 targets
+INFO     HunterLoop:router.py:88 [Router] dynamic: 1 targets
+__________ TestSecurityIntegration.test_command_injection_prevention __________
+tests\test_integration.py:113: in test_command_injection_prevention
+    assert ";" not in result or result is None
+           ^^^^^^^^^^^^^^^^^
+E   TypeError: argument of type 'NoneType' is not iterable
+------------------------------ Captured log call ------------------------------
+WARNING  HunterLoop:validator.py:130 [Security] Dangerous character detected: ';'
+____________ TestRouterClassification.test_dynamic_url_with_params ____________
+tests\test_router.py:35: in test_dynamic_url_with_params
+    assert len(queues[TargetType.DYNAMIC]) == 3
+E   AssertionError: assert 2 == 3
+E    +  where 2 = len([RoutedTarget(url='https://example.com/search.php?q=test', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['q'], tech_stack=[]), RoutedTarget(url='https://example.com/page?id=1&cat=2', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id', 'cat'], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 3 URLs...
+INFO     HunterLoop:router.py:88 [Router] dynamic: 2 targets
+INFO     HunterLoop:router.py:88 [Router] login: 1 targets
+____________ TestRouterClassification.test_api_endpoint_detection _____________
+tests\test_router.py:68: in test_api_endpoint_detection
+    assert len(queues[TargetType.API]) == 4
+E   AssertionError: assert 3 == 4
+E    +  where 3 = len([RoutedTarget(url='https://example.com/api/v2/products', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://example.com/graphql', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://example.com/rest/data', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 4 URLs...
+INFO     HunterLoop:router.py:88 [Router] login: 1 targets
+INFO     HunterLoop:router.py:88 [Router] api: 3 targets
+_________________ TestRouterClassification.test_cms_detection _________________
+tests\test_router.py:83: in test_cms_detection
+    assert len(queues[TargetType.CMS]) == 3
+E   AssertionError: assert 1 == 3
+E    +  where 1 = len([RoutedTarget(url='https://example.com/wp-content/themes/theme', target_type=<TargetType.CMS: 'cms'>, parameters=[], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 3 URLs...
+INFO     HunterLoop:router.py:88 [Router] cms: 1 targets
+INFO     HunterLoop:router.py:88 [Router] login: 2 targets
+_______ TestRouterDeduplication.test_different_params_not_deduplicated ________
+tests\test_router.py:152: in test_different_params_not_deduplicated
+    assert len(queues[TargetType.DYNAMIC]) == 3
+E   AssertionError: assert 2 == 3
+E    +  where 2 = len([RoutedTarget(url='https://example.com/page.php?id=1', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id'], tech_stack=[]), RoutedTarget(url='https://example.com/page.php?id=1&cat=2', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id', 'cat'], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 3 URLs...
+INFO     HunterLoop:router.py:88 [Router] dynamic: 2 targets
+INFO     HunterLoop:router.py:88 [Router] login: 1 targets
+__________________ TestScopeGuard.test_url_with_credentials ___________________
+tests\test_scope_guard.py:99: in test_url_with_credentials
+    assert scope_guard.is_in_scope("https://user:pass@www.example.com/") is True
+E   AssertionError: assert False is True
+E    +  where False = is_in_scope('https://user:pass@www.example.com/')
+E    +    where is_in_scope = <utils.scope_guard.ScopeGuard object at 0x000001ADEB7031A0>.is_in_scope
+___________________ TestAuditLogger.test_audit_log_creation ___________________
+tests\test_security.py:162: in test_audit_log_creation
+    assert audit_logger.log_file.exists()
+E   AssertionError: assert False
+E    +  where False = exists()
+E    +    where exists = WindowsPath('C:/Users/ttapk/AppData/Local/Temp/pytest-of-ttapk/pytest-2/test_audit_log_creation0/audit.log').exists
+E    +      where WindowsPath('C:/Users/ttapk/AppData/Local/Temp/pytest-of-ttapk/pytest-2/test_audit_log_creation0/audit.log') = <security.audit.AuditLogger object at 0x000001ADEB7D8D70>.log_file
+------------------------------ Captured log call ------------------------------
+INFO     audit:audit.py:125 {"timestamp": "2026-01-31T14:33:32.100029Z", "action": "pipeline_start", "target": "example.com", "details": {}, "severity": "INFO", "user": "system", "session_id": "a2cfcc41"}
+____________________ TestAuditLogger.test_audit_log_format ____________________
+tests\test_security.py:173: in test_audit_log_format
+    assert len(events) > 0
+E   assert 0 > 0
+E    +  where 0 = len([])
+------------------------------ Captured log call ------------------------------
+INFO     audit:audit.py:125 {"timestamp": "2026-01-31T14:33:32.151526Z", "action": "finding_detected", "target": "test.com", "details": {"severity": "HIGH"}, "severity": "INFO", "user": "system", "session_id": "53ea1c36"}
+_________________ TestAuditLogger.test_session_id_consistent __________________
+tests\test_security.py:186: in test_session_id_consistent
+    assert len(session_ids) == 1  # All same session
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   assert 0 == 1
+E    +  where 0 = len(set())
+------------------------------ Captured log call ------------------------------
+INFO     audit:audit.py:125 {"timestamp": "2026-01-31T14:33:32.206479Z", "action": "scan_start", "target": "test1.com", "details": {}, "severity": "INFO", "user": "system", "session_id": "fab00ed0"}
+INFO     audit:audit.py:125 {"timestamp": "2026-01-31T14:33:32.206479Z", "action": "scan_end", "target": "test1.com", "details": {}, "severity": "INFO", "user": "system", "session_id": "fab00ed0"}
+============================== warnings summary ===============================
+tests/test_integration.py::TestPipelineIntegration::test_dry_run_pipeline
+  C:\Users\ttapk\PycharmProjects\pythonProject\CVE\cve_pipeline\modules\ai_triage.py:16: FutureWarning: 
+  
+  All support for the `google.generativeai` package has ended. It will no longer be receiving 
+  updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+  See README for more details:
+  
+  https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+  
+    import google.generativeai as genai
+
+tests/test_security.py::TestAuditLogger::test_audit_log_creation
+tests/test_security.py::TestAuditLogger::test_audit_log_format
+tests/test_security.py::TestAuditLogger::test_session_id_consistent
+tests/test_security.py::TestAuditLogger::test_session_id_consistent
+  C:\Users\ttapk\PycharmProjects\pythonProject\CVE\cve_pipeline\security\audit.py:116: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp=datetime.utcnow().isoformat() + "Z",
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_integration.py::TestPipelineIntegration::test_router_integration - AssertionError: assert 2 == 1
+ +  where 2 = len([RoutedTarget(url='https://www.testdomain.com/login', target_type=<TargetType.LOGIN: 'login'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://api.testdomain.com/v1/users?id=1', target_type=<TargetType.LOGIN: 'login'>, parameters=[], tech_stack=[])])
+FAILED tests/test_integration.py::TestSecurityIntegration::test_command_injection_prevention - TypeError: argument of type 'NoneType' is not iterable
+FAILED tests/test_router.py::TestRouterClassification::test_dynamic_url_with_params - AssertionError: assert 2 == 3
+ +  where 2 = len([RoutedTarget(url='https://example.com/search.php?q=test', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['q'], tech_stack=[]), RoutedTarget(url='https://example.com/page?id=1&cat=2', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id', 'cat'], tech_stack=[])])
+FAILED tests/test_router.py::TestRouterClassification::test_api_endpoint_detection - AssertionError: assert 3 == 4
+ +  where 3 = len([RoutedTarget(url='https://example.com/api/v2/products', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://example.com/graphql', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://example.com/rest/data', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[])])
+FAILED tests/test_router.py::TestRouterClassification::test_cms_detection - AssertionError: assert 1 == 3
+ +  where 1 = len([RoutedTarget(url='https://example.com/wp-content/themes/theme', target_type=<TargetType.CMS: 'cms'>, parameters=[], tech_stack=[])])
+FAILED tests/test_router.py::TestRouterDeduplication::test_different_params_not_deduplicated - AssertionError: assert 2 == 3
+ +  where 2 = len([RoutedTarget(url='https://example.com/page.php?id=1', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id'], tech_stack=[]), RoutedTarget(url='https://example.com/page.php?id=1&cat=2', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id', 'cat'], tech_stack=[])])
+FAILED tests/test_scope_guard.py::TestScopeGuard::test_url_with_credentials - AssertionError: assert False is True
+ +  where False = is_in_scope('https://user:pass@www.example.com/')
+ +    where is_in_scope = <utils.scope_guard.ScopeGuard object at 0x000001ADEB7031A0>.is_in_scope
+FAILED tests/test_security.py::TestAuditLogger::test_audit_log_creation - AssertionError: assert False
+ +  where False = exists()
+ +    where exists = WindowsPath('C:/Users/ttapk/AppData/Local/Temp/pytest-of-ttapk/pytest-2/test_audit_log_creation0/audit.log').exists
+ +      where WindowsPath('C:/Users/ttapk/AppData/Local/Temp/pytest-of-ttapk/pytest-2/test_audit_log_creation0/audit.log') = <security.audit.AuditLogger object at 0x000001ADEB7D8D70>.log_file
+FAILED tests/test_security.py::TestAuditLogger::test_audit_log_format - assert 0 > 0
+ +  where 0 = len([])
+FAILED tests/test_security.py::TestAuditLogger::test_session_id_consistent - assert 0 == 1
+ +  where 0 = len(set())
+================= 10 failed, 52 passed, 5 warnings in 18.58s ==================

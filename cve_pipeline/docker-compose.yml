@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  hunter:
+    build: .
+    volumes:
+      - ./data:/app/data # Persist SQLite DB & Artifacts
+      - ./config:/app/config # Edit config without rebuilding
+      - nuclei-templates:/root/nuclei-templates # Persist Templates
+    env_file:
+      - .env
+    restart: unless-stopped
+    # specific network config might be needed for some recon tools
+    network_mode: "host"
+
+volumes:
+  nuclei-templates:

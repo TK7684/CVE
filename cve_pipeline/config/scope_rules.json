@@ -1,0 +1,10 @@
+{
+  "allowed_domains": [
+    ".example.com",
+    "api.example.com"
+  ],
+  "excluded_domains": [
+    "out-of-scope.example.com"
+  ],
+  "regex_checks": false
+}

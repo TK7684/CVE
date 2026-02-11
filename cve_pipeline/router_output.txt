@@ -1,0 +1,67 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.4, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\ttapk\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: C:\Users\ttapk\PycharmProjects\pythonProject\CVE\cve_pipeline
+configfile: pytest.ini
+plugins: anyio-4.12.1, langsmith-0.6.3, asyncio-1.2.0, benchmark-5.1.0, cov-4.1.0, flask-1.3.0, mock-3.14.1, profiling-1.8.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items
+
+tests/test_router.py::TestRouterClassification::test_dynamic_url_with_params FAILED [  7%]
+tests/test_router.py::TestRouterClassification::test_login_page_detection PASSED [ 15%]
+tests/test_router.py::TestRouterClassification::test_api_endpoint_detection FAILED [ 23%]
+tests/test_router.py::TestRouterClassification::test_cms_detection FAILED [ 30%]
+tests/test_router.py::TestRouterClassification::test_js_file_detection PASSED [ 38%]
+tests/test_router.py::TestRouterClassification::test_static_assets_skipped PASSED [ 46%]
+tests/test_router.py::TestRouterDeduplication::test_parameter_deduplication PASSED [ 53%]
+tests/test_router.py::TestRouterDeduplication::test_different_params_not_deduplicated FAILED [ 61%]
+tests/test_router.py::TestRouterDeduplication::test_different_paths_not_deduplicated PASSED [ 69%]
+tests/test_router.py::TestRouterDeduplication::test_exact_duplicate_removal PASSED [ 76%]
+tests/test_router.py::TestRouterEdgeCases::test_empty_url_list PASSED    [ 84%]
+tests/test_router.py::TestRouterEdgeCases::test_whitespace_urls PASSED   [ 92%]
+tests/test_router.py::TestRouterEdgeCases::test_mixed_priority PASSED    [100%]
+
+================================== FAILURES ===================================
+____________ TestRouterClassification.test_dynamic_url_with_params ____________
+tests\test_router.py:35: in test_dynamic_url_with_params
+    assert len(queues[TargetType.DYNAMIC]) == 3
+E   AssertionError: assert 2 == 3
+E    +  where 2 = len([RoutedTarget(url='https://example.com/search.php?q=test', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['q'], tech_stack=[]), RoutedTarget(url='https://example.com/page?id=1&cat=2', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id', 'cat'], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 3 URLs...
+INFO     HunterLoop:router.py:88 [Router] dynamic: 2 targets
+INFO     HunterLoop:router.py:88 [Router] login: 1 targets
+____________ TestRouterClassification.test_api_endpoint_detection _____________
+tests\test_router.py:68: in test_api_endpoint_detection
+    assert len(queues[TargetType.API]) == 4
+E   AssertionError: assert 3 == 4
+E    +  where 3 = len([RoutedTarget(url='https://example.com/api/v2/products', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://example.com/graphql', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[]), RoutedTarget(url='https://example.com/rest/data', target_type=<TargetType.API: 'api'>, parameters=[], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 4 URLs...
+INFO     HunterLoop:router.py:88 [Router] login: 1 targets
+INFO     HunterLoop:router.py:88 [Router] api: 3 targets
+_________________ TestRouterClassification.test_cms_detection _________________
+tests\test_router.py:83: in test_cms_detection
+    assert len(queues[TargetType.CMS]) == 3
+E   AssertionError: assert 1 == 3
+E    +  where 1 = len([RoutedTarget(url='https://example.com/wp-content/themes/theme', target_type=<TargetType.CMS: 'cms'>, parameters=[], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 3 URLs...
+INFO     HunterLoop:router.py:88 [Router] cms: 1 targets
+INFO     HunterLoop:router.py:88 [Router] login: 2 targets
+_______ TestRouterDeduplication.test_different_params_not_deduplicated ________
+tests\test_router.py:152: in test_different_params_not_deduplicated
+    assert len(queues[TargetType.DYNAMIC]) == 3
+E   AssertionError: assert 2 == 3
+E    +  where 2 = len([RoutedTarget(url='https://example.com/page.php?id=1', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id'], tech_stack=[]), RoutedTarget(url='https://example.com/page.php?id=1&cat=2', target_type=<TargetType.DYNAMIC: 'dynamic'>, parameters=['id', 'cat'], tech_stack=[])])
+------------------------------ Captured log call ------------------------------
+INFO     HunterLoop:router.py:61 [Router] Processing 3 URLs...
+INFO     HunterLoop:router.py:88 [Router] dynamic: 2 targets
+INFO     HunterLoop:router.py:88 [Router] login: 1 targets
+=========================== short test summary info ===========================
+FAILED tests/test_router.py::TestRouterClassification::test_dynamic_url_with_params
+FAILED tests/test_router.py::TestRouterClassification::test_api_endpoint_detection
+FAILED tests/test_router.py::TestRouterClassification::test_cms_detection - A...
+FAILED tests/test_router.py::TestRouterDeduplication::test_different_params_not_deduplicated
+========================= 4 failed, 9 passed in 1.13s =========================

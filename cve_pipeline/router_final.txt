@@ -1,0 +1,25 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.4, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\ttapk\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: C:\Users\ttapk\PycharmProjects\pythonProject\CVE\cve_pipeline
+configfile: pytest.ini
+plugins: anyio-4.12.1, langsmith-0.6.3, asyncio-1.2.0, benchmark-5.1.0, cov-4.1.0, flask-1.3.0, mock-3.14.1, profiling-1.8.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items
+
+tests/test_router.py::TestRouterClassification::test_dynamic_url_with_params PASSED [  7%]
+tests/test_router.py::TestRouterClassification::test_login_page_detection PASSED [ 15%]
+tests/test_router.py::TestRouterClassification::test_api_endpoint_detection PASSED [ 23%]
+tests/test_router.py::TestRouterClassification::test_cms_detection PASSED [ 30%]
+tests/test_router.py::TestRouterClassification::test_js_file_detection PASSED [ 38%]
+tests/test_router.py::TestRouterClassification::test_static_assets_skipped PASSED [ 46%]
+tests/test_router.py::TestRouterDeduplication::test_parameter_deduplication PASSED [ 53%]
+tests/test_router.py::TestRouterDeduplication::test_different_params_not_deduplicated PASSED [ 61%]
+tests/test_router.py::TestRouterDeduplication::test_different_paths_not_deduplicated PASSED [ 69%]
+tests/test_router.py::TestRouterDeduplication::test_exact_duplicate_removal PASSED [ 76%]
+tests/test_router.py::TestRouterEdgeCases::test_empty_url_list PASSED    [ 84%]
+tests/test_router.py::TestRouterEdgeCases::test_whitespace_urls PASSED   [ 92%]
+tests/test_router.py::TestRouterEdgeCases::test_mixed_priority PASSED    [100%]
+
+============================= 13 passed in 0.15s ==============================
