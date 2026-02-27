@@ -41,8 +41,8 @@ class Router:
     # Patterns for classification (Compiled Regex for Performance)
     # Note: Regex is faster than iterating over sets for many keywords
     LOGIN_PATTERN = re.compile(r"login|signin|auth|admin|dashboard|panel|wp-login", re.IGNORECASE)
-    API_PATTERN = re.compile(r"/api/|/v1/|/v2/|/v3/|/graphql|/rest/", re.IGNORECASE)
-    CMS_PATTERN = re.compile(r"/wp-content/|/wp-admin/|/joomla/|/drupal/|/magento/", re.IGNORECASE)
+    API_PATTERN = re.compile(r"/api/|/v\d+|/graphql|/rest", re.IGNORECASE)
+    CMS_PATTERN = re.compile(r"/wp-|/joomla|/drupal|/magento|/wordpress", re.IGNORECASE)
     
     # Static extensions (Ends with)
     STATIC_EXTENSIONS = (
